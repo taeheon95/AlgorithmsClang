@@ -9,5 +9,14 @@
   "C_Cpp.clang_format_fallbackStyle": "Google",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "bit": "cpp",
+    "compare": "cpp",
+    "memory": "cpp",
+    "type_traits": "cpp",
+    "new": "cpp",
+    "tuple": "cpp",
+    "utility": "cpp"
   }
 }
