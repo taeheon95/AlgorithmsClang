@@ -8,10 +8,10 @@ typedef int LData;
 typedef struct __SimpleLinkedList {
   Node *head;
   void (*constructor)();
-  void (*insertFirst)(Node *head, int data);
-  void (*insertLast)(Node *head, int data);
-  int (*get)(Node *head, int pos);
-  int (*set)(Node *head, int pos, int data);
+  void (*insertFirst)(__SimpleLinkedList *list, int data);
+  void (*insertLast)(__SimpleLinkedList *list, int data);
+  int (*get)(__SimpleLinkedList *list, int pos);
+  int (*set)(__SimpleLinkedList *list, int pos, int data);
   int (*remove)(int data);
   int (*count)();
 } SimpleLinkedList;

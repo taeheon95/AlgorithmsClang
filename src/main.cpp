@@ -4,25 +4,31 @@
 #include "./SimpleLinkedLists/SimpleLinkedList.h"
 
 void test() {}
-void insertFirst(Node *head, int data) {
+void insertFirst(List *list, int data) {
   Node *newNode = (Node *)malloc(sizeof(Node));
   newNode->data = data;
-  newNode->next = head->next;
-  head->next = newNode;
+  if (list->head != NULL) {
+    newNode->next = list->head;
+  }
+  list->head = newNode;
 }
 
-void insertLast(Node *head, int data) {
+void insertLast(List *list, int data) {
   Node *newNode = (Node *)malloc(sizeof(Node));
   newNode->data = data;
   newNode->next = NULL;
-  Node *temp = head;
+  if (list->head == NULL) {
+    list->head = newNode;
+    return;
+  }
+  Node *temp = list->head;
   for (temp; temp->next != NULL; temp = temp->next) {
   }
   temp->next = newNode;
 }
 
-int get(Node *head, int pos) {
-  Node *temp = head;
+int get(List *list, int pos) {
+  Node *temp = list->head;
   int i = 0, returnVal = -1;
   while (i < pos && temp->next != NULL) {
     i++;
@@ -34,8 +40,8 @@ int get(Node *head, int pos) {
   return returnVal;
 }
 
-int set(Node *head, int pos, int data) {
-  Node *temp = head;
+int set(List *list, int pos, int data) {
+  Node *temp = list->head;
   int i = 0;
   while (i < pos && temp->next != NULL) {
     i++;
@@ -55,9 +61,9 @@ int main(int argc, char *argv[]) {
   list->insertLast = insertLast;
   list->get = get;
   list->set = set;
-  list->insertFirst(list->head, 1);
-  list->insertLast(list->head, 2);
-  list->get(list->head, 0);
-  list->set(list->head, 1, 1);
+  list->insertLast(list, 2);
+  list->insertFirst(list, 1);
+  list->get(list, 0);
+  list->set(list, 1, 1);
   return 0;
 }
